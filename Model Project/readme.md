@@ -3,7 +3,7 @@
 
 ##  Overview
 
-**How do current velocites differ between tributaries of the Monterey Bay submarine canyon head. 
+How do current velocites differ between tributaries of the Monterey Bay submarine canyon head. 
 This project investigates how a complex bathymetry due to a submarine canyon that incepts the coastal zone, alters the state of an ocean model — with a specific focus on how it affects **currents** within the model domain. This model also controls for external forcing parameters such as wave regimes and tides so model output is solely based on wind regimes during the year 2000. 
 
 The **study area** is the **head of the Monterey Bay Submarine Canyon**, a region known for complex bathymetric structure and dynamic current systems.
@@ -11,7 +11,7 @@ The **study area** is the **head of the Monterey Bay Submarine Canyon**, a regio
 ---
 
 ##  Objectives
-- Create a high resolution (6mx20m) regonal model downscaled for just the area of the head of the monterey bay submarine canyon.  
+- Create a high resolution (6mx20m) regional model downscaled for just the area of the head of the monterey bay submarine canyon.  
 - Evaluate temporal and spatial differences in **current patterns** specifically near bottom vvel current velocites.
 - Compare these current velocties between the two tributaries within the canyon head. 
 
