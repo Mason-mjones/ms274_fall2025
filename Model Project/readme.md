@@ -3,8 +3,9 @@
 
 ##  Overview
 
-How do current velocites differ between tributaries of the Monterey Bay submarine canyon head. 
-This project investigates how a complex bathymetry due to a submarine canyon that incepts the coastal zone, alters the state of an ocean model — with a specific focus on how it affects **currents** within the model domain. This model also controls for external forcing parameters such as wave regimes and tides so model output is solely based on wind regimes during the year 2000. 
+How do current velocites differ between tributaries of the Monterey Bay submarine canyon head?
+
+This project investigates how a complex bathymetry due to a submarine canyon that intercepts the coastal zone, alters the state of an ocean model — with a specific focus on how it affects **currents** within the model domain. This model also controls for external forcing parameters such as wave regimes and tides so model output is solely based on wind regimes during the year 2000. 
 
 The **study area** is the **head of the Monterey Bay Submarine Canyon**, a region known for complex bathymetric structure and dynamic current systems.
 
@@ -37,19 +38,19 @@ The simulation cover **the year 2000**, chosen because:
 ### Reproducing the model output
 
 ### Step 1. File Creation
-- Download all notebooks included below and follow the in the order as they are numbered to creating all the initial files needed to form the model.
+- Download all notebooks included below and follow in the order as they are numbered to creating all the initial files needed to form the model.
     These include creating: Model Grid, Bathymetry, Initial conditions, External conditions, and Boundary conditions.
 
 ### Step 2. Spartan Transfer
-- Once all your files are created you'll need to copy MITgcm into your profile on Spartan. You can you this line of code below to push files from your local onto Spartan
+- Once all your files are created you'll need to copy MITgcm into your profile on Spartan. You can use this line of code below to push files from your local onto Spartan
   scp DIAGNOSTICS_SIZE.h
 [username]@spartan03.sjsu.edu:/scratch/[username]/MS274/MITgcm/configurations/[Model name]
 
 - Then create a new directory within the configurations directory as the name of your model.
-- Within that directory your organize your folders as i have it above, Including the folders Code, Input, Namelist, Run, and Build.
+- Within that directory you organize your folders as i have it above, including the folders Code, Input, Namelist, Run, and Build.
 
 ### Step 3. Compile
-- Once your directories are created youll make to your empty build directory and compile your model. Using these lines of code below (Make sure your conda environment is activated)
+- Once your directories are created you'll move to your empty build directory and compile your model. Using these lines of code below (Make sure your conda environment is activated)
   export MPI_HOME=/scratch/home/[username]/.conda/envs/ms274
 ../../../tools/genmake2 -of ../../../tools/build_options/linux_amd64_gfortran -mods ../code -mpi
   make depend
@@ -61,12 +62,11 @@ The simulation cover **the year 2000**, chosen because:
 #SBATCH --partition=nodes
 #SBATCH --nodes=1
 #SBATCH --ntasks=2
-#SBATCH --time=10:00:00
 export MPI_HOME=/scratch/home/[username]/.conda/envs/ms274 mpirun -np 2 ./mitgcmuv
 - then submit the slurm job to start the model
 
 ### Step 5. Analyze the Model Output
-- 5 variables outputs were created in your diags folder but the only improtant one to download to your loacl computer is the vel_3D_mon_snap folder.
+- 5 variable outputs were created in your diags folder but the only improtant one to download to your loacl computer is the vel_3D_mon_snap folder.
 - Once the files are downloaded(its going to take awhile) you can open the analysis notebooks provided to look at current and near bottom velocity differences within the model grid. 
 
 ---
@@ -77,10 +77,9 @@ export MPI_HOME=/scratch/home/[username]/.conda/envs/ms274 mpirun -np 2 ./mitgcm
 
 ---
 
-##  Expected Outcomes
-- Quantitative assessment of how bathymetry resolution affects modeled current structures.  
-- Visual representation of current discrepancies under different bathymetric conditions.  
-- Insights into **model sensitivity** to topographic detail in coastal and canyon environments.
+##  Results and Discussion
+First off since the timestep for this model was 1, I was only able to recieve just over 2 weeks of data in the almost 4 days of run time. This leads to the first potential bias of this entire model run still being in the possible spin up time period. After visualizing the surface currents, I could see clear distinction at times where there were high local velocities over the two tributaries. I then compared these occurances with near bottom VVEL currents to see if there was any mimicry. Overall there was some resemblence but more so with the western moving currents through the water column. This could be due to a local Southernly wind event that drove these higher velocity currents. In the activity realm there also didnt seem to be a clear dominant tributary. Each one had its cycles of low to high velocites either at the same or seperate times. 
+To continue this model further I'd want to finish the run to have a full year of data. Then I'd update the bathymetry with my own higher resolution data to compare. If that update looks promising I'd impliment tides and wave action into my external forcings for a more real world scenario. 
 
 ---
 
